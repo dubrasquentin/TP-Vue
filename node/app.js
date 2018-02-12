@@ -18,8 +18,6 @@ myRouter.route('/')
 .get(function(req,res){ 
  res.json({
  message : "Liste des films avec paramètres :",
- ville : req.query.ville,
- nbResultat : req.query.maxresultat, 
  methode : req.method });
  
 })
@@ -41,4 +39,4 @@ res.json({message : "Suppression d'un film dans la liste", methode : req.method}
 app.use(myRouter);  
 
 // Démarrer le serveur 
-app.listen(8080, () => console.log('VueJs_Projet listening on port 8081!'));
+app.listen(8080, () => console.log('VueJs_Projet on port 8081!'));
