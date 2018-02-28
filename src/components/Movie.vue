@@ -49,33 +49,31 @@
 </template>
 
 <script>
-  /* eslint-disable no-new */
+/* eslint-disable no-new */
 
-  export default {
-    computed: {
-      movie () {
-        return this.$store.getters.getMovieById(this.$route.params.id)
-      },
-      note () {
-        var note = this.$store.getters.getNoteByMovieId(this.$route.params.id);
-        if(note == null)
-        {
-          return 'Pas de note pour ce film';
-        }
-        else{
-          return note ;
-        }
-      }
+export default {
+  computed: {
+    movie () {
+      return this.$store.getters.getMovieById(this.$route.params.id)
     },
-    methods: {
-      delMovie: function () {
-        this.$store.dispatch('delMovie', {id :this.$route.params.id})
-        this.$router.push('/')
-      },
-      addNote: function () {
-        const note = this.selected
-        this.$store.dispatch('addNote', {id: this.$route.params.id, note: note})
+    note () {
+      var note = this.$store.getters.getNoteByMovieId(this.$route.params.id)
+      if (note == null) {
+        return 'Pas de note pour ce film'
+      } else {
+        return note
       }
     }
+  },
+  methods: {
+    delMovie: function () {
+      this.$store.dispatch('delMovie', {id: this.$route.params.id})
+      this.$router.push('/')
+    },
+    addNote: function () {
+      const note = this.selected
+      this.$store.dispatch('addNote', {id: this.$route.params.id, note: note})
+    }
   }
+}
 </script>

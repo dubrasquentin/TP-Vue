@@ -15,7 +15,7 @@
               </form>
           </nav>
       </div>
-      <div class="card-deck mb-4" v-for="movie in movies" key="movie.id">
+      <div class="card-deck mb-4" v-for="movie in movies" v-bind:key="movie.id">
           <div class="card" >
               <div class="card-body">
                   <div class="row">
@@ -44,16 +44,16 @@
 </template>
 //script
 <script>
-  export default {
-    computed: {
-      movies () {
-        return this.$store.getters.getMovies
-      }
-    },
-    methods: {
-      onLoadMovie (id) {
-        this.$router.push('/movies/' + id)
-      }
+export default {
+  computed: {
+    movies () {
+      return this.$store.getters.getMovies
+    }
+  },
+  methods: {
+    onLoadMovie (id) {
+      this.$router.push('/movies/' + id)
     }
   }
+}
 </script>

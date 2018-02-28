@@ -58,50 +58,49 @@ export const store = new Vuex.Store({
         })
       }
     },
-    //Recherche d'un film avec son nom
+    // Recherche d'un film avec son nom
     getMovieBySearch: state => text => {
       var movies = []
-      for (var i = 0; i < state.loadeMovies.length ; i++) {
+      for (var i = 0; i < state.loadeMovies.length; i++) {
         if (state.loadeMovies[i].title.includes(text)) {
-          movies.push(state.loadeMovies[i]);
+          movies.push(state.loadeMovies[i])
         }
       }
-      return movies;
+      return movies
     },
-    //Getters des notes pour un films + Moyenne
+    // Getters des notes pour un films + Moyenne
     getNoteByMovieId: (state) => (id) => {
-
       var movie = state.loadeMovies.find(movies => movies.id === id)
       if (movie.notes.length === 0) {
-        return null;
+        return null
       } else {
-        var sum = 0;
+        var sum = 0
         for (var i = 0; i < movie.notes.length; i++) {
           sum += parseInt(movie.notes[i], 10)
         }
-        return sum / movie.notes.length ;
+        return sum / movie.notes.length
       }
     }
   },
   mutations: {
     editMovie (state, movie) {
-      var film = state.loadeMovies.find(loadeMovies => loadeMovies.id === movie.id);
-      film.title = movie.title;
-      film.year = movie.year;
-      film.language = movie.language;
-      film.reaName = movie.reaName;
-      film.reaNatio = movie.reaNatio;
-      film.reaDate = movie.reaDate;
-      film.kind = movie.kind;
-      film.poster = movie.poster;
+      var film = state.loadeMovies.find(loadeMovies => loadeMovies.id === movie.id)
+      film.title = movie.title
+      film.year = movie.year
+      film.language = movie.language
+      film.reaName = movie.reaName
+      film.reaNatio = movie.reaNatio
+      film.reaDate = movie.reaDate
+      film.kind = movie.kind
+      film.poster = movie.poster
     },
     addMovie (state, payload) {
       state.loadeMovies.push(payload)
     },
     delMovie (state, payload) {
       var removeIndex = state.loadeMovies.map(function (item) {
-        return item.id;
-      }).indexOf(payload);
+        return item.id
+      }).indexOf(payload)
       state.loadeMovies.splice(removeIndex, 1)
     },
     addNote (state, payload) {
@@ -130,7 +129,7 @@ export const store = new Vuex.Store({
     },
     addNote ({commit}, payload) {
       const movieToNote = this.state.loadeMovies.find(movies => movies.id === payload.id)
-      commit('addNote', {movie : movieToNote, note: payload.note})
+      commit('addNote', {movie: movieToNote, note: payload.note})
     }
   }
-});
+})

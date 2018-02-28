@@ -39,36 +39,36 @@
 
 </template>
 <script>
-    export default{
-      data () {
-        return {
-          title: '',
-          year: '',
-          language: '',
-          kind: '',
-          reaName: '',
-          reaDate: '',
-          reaNatio: '',
-          poster: ''
-        }
-      },
-      computed: {
-      },
-      methods: {
-        onaddMovie () {
-          const movieData = {
-            title: this.title,
-            year: this.year,
-            language: this.language,
-            kind: this.kind,
-            reaName: this.reaName,
-            reaDate: this.reaDate,
-            reaNatio: this.reaNatio,
-            poster: this.poster
-          }
-          this.$store.dispatch('addMovie', movieData)
-          this.$router.push('/')
-        }
-      }
+export default{
+  data () {
+    return {
+      title: '',
+      year: '',
+      language: '',
+      kind: '',
+      reaName: '',
+      reaDate: '',
+      reaNatio: '',
+      poster: ''
     }
+  },
+  computed: {
+  },
+  methods: {
+    onaddMovie () {
+      const movieData = {
+        title: this.title,
+        year: this.year,
+        language: this.language,
+        kind: this.kind,
+        reaName: this.reaName,
+        reaDate: this.reaDate,
+        reaNatio: this.reaNatio,
+        poster: this.poster
+      }
+      this.$store.dispatch('addMovie', movieData)
+      this.$router.push('/')
+    }
+  }
+}
 </script>

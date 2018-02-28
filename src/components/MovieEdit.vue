@@ -45,18 +45,18 @@
     </div>
 </template>
 <script>
-    export default {
-      data: function () {
-        return{
-          movie: this.$route.params.movie
-        }
-      },
-      methods: {
-
-        editMovie: function () {
-          var movieM = this.movie;
-          this.$store.commit('editMovie', {movie : movieM	})
-        }
-      }
+export default {
+  data: function () {
+    return {
+      movie: this.$route.params.movie
     }
+  },
+  methods: {
+
+    editMovie: function () {
+      var movieM = this.movie
+      this.$store.commit('editMovie', { movie: movieM })
+    }
+  }
+}
 </script>

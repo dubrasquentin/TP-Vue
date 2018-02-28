@@ -8,7 +8,7 @@
             </form>
         </nav>
 
-        <div class="card-deck mt-4" v-for="movie in tab" key="movie.id">
+        <div class="card-deck mt-4" v-for="movie in tab" v-bind:key="movie.id">
             <div class="card" >
                 <div class="card-body">
                     <div class="row">
@@ -35,27 +35,24 @@
         </div>
     </div>
 </template>
-
-
 <script >
-  export default {
-    data (){
-      return {
-        title: '',
-        tab: []
-      }
-    },
-    computed: {
-      searchM () {
-        var result = this.$store.getters.getMovieBySearch(this.title)
-
-        if(result.length > 0 ) {
-          return this.tab = result;
-        }
-        else{
-          return null;
-        }
+export default {
+  data () {
+    return {
+      title: '',
+      tab: []
+    }
+  },
+  computed: {
+    searchM () {
+      var result = this.$store.getters.getMovieBySearch(this.title)
+      if (result.length > 0) {
+        this.tab = result
+        return result
+      } else {
+        return null
       }
     }
   }
+}
 </script>
